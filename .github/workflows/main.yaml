@@ -27,8 +27,7 @@ jobs:
             "event_type": "deploy",
             "client_payload": {
               "target": "production",
-              "branch": "main",
-              "commit": "sha"
+              "commit": "4b4e875d799cd0392d1b0b184bd40d53b85e50d6"
             }
           }'
       
