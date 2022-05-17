@@ -14,20 +14,17 @@ jobs:
           node-version: 16
       
       - name: Trigger
-        env:
-          ORG: ${{ secrets.ORG }}
-          REPO: ${{ secrets.REPO }}
         run: |
           curl --request POST \
-            --url 'https://api.github.com/repos/kamilkisiela/foo/dispatches' \
+            --url 'https://api.github.com/repos/${{ secrets.ORG }}/${{ secrets.REPO }}/dispatches' \
             --header 'Accept: application/vnd.github.everest-preview+json' \
             --header 'Authorization: token ${{ secrets.CROSS_GITHUB_TOKEN }}' \
             --header 'Content-Type: application/json' \
             --data '{
             "event_type": "deploy",
             "client_payload": {
-              "target": "production",
-              "commit": "4b4e875d799cd0392d1b0b184bd40d53b85e50d6"
+              "environment": "staging",
+              "ref": "4b4e875d799cd0392d1b0b184bd40d53b85e50d6"
             }
           }'
       
