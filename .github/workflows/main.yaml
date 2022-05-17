@@ -24,7 +24,7 @@ jobs:
             "event_type": "deploy",
             "client_payload": {
               "environment": "staging",
-              "ref": "$GITHUB_SHA"
+              "ref": "${{ github.sha }}"
             }
           }'
       
