@@ -20,7 +20,7 @@ jobs:
           REPO: ${{ secrets.REPO }}
         run: |
           curl --request POST \
-            --url 'https://api.github.com/repos/${ORG}/${REPO}/dispatches' \
+            --url 'https://api.github.com/repos/kamilkisiela/foo/dispatches' \
             --header 'Accept: application/vnd.github.everest-preview+json' \
             --header 'Authorization: token ${GITHUB_TOKEN}' \
             --header 'Content-Type: application/json' \
