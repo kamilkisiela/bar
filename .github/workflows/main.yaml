@@ -12,6 +12,27 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16
-
+      
+      - name: Trigger
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ORG: ${{ secrets.ORG }}
+          REPO: ${{ secrets.REPO }}
+        run: |
+          curl --request POST \
+            --url 'https://api.github.com/repos/${ORG}/${REPO}/dispatches' \
+            --header 'Accept: application/vnd.github.everest-preview+json' \
+            --header 'Authorization: token ${GITHUB_TOKEN}' \
+            --header 'Content-Type: application/json' \
+            --data '{
+            "event_type": "deploy",
+            "client_payload": {
+              "target": "production",
+              "branch": "main",
+              "commit": "sha"
+            }
+          }'
+      
       - name: Echo
         run: echo "Bar"
+
