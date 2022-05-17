@@ -15,7 +15,7 @@ jobs:
       
       - name: Trigger
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CROSS_GITHUB_TOKEN }}
           ORG: ${{ secrets.ORG }}
           REPO: ${{ secrets.REPO }}
         run: |
